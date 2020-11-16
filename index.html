@@ -163,9 +163,6 @@
 
       const aThat = "\u103a";
 
-
-      alert("letter 1");
-
       // Regular expression pattern for Myanmar syllable breaking
       // *** a consonant not after a subscript symbol AND a consonant is not
       // followed by a-That character or a subscript symbol
@@ -185,8 +182,6 @@
       */
 
       //const BREAK_PATTERN = new RegExp('\(\(?<!' + ssSymbol + '\)\[' + myConsonant + '\]\(?!\[' + aThat + ssSymbol + '\]\)' + '|\[' + enChar + otherChar + '\]\)', 'mg');
-
-      alert("letter 2");
 
       function segment(text) {
         var outArray = text.replace(BREAK_PATTERN, "𝕊$1").split('𝕊')
@@ -282,11 +277,11 @@
       text = text.split("၊").join("");
       text = text.split(" ").join("");
       text = text.replace(/\s/g,'');
-      console.log(text);
+
       letter = segment(text);
       alert_test = segmentWithSeparator(text);
-      alert(alert_test);
-      console.log(letter);
+      //alert(alert_test);
+      //console.log(alert_test);
 
       // Mix up and random the string
       var letter  = letter.sort(function() { return 0.5 - Math.random() });
