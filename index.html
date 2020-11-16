@@ -105,7 +105,7 @@
 
     <main class="container">
       <div class="bg-light p-3 mt-3 rounded border">
-        <a class="btn btn-lg btn btn-outline-secondary mb-3" id="btn_dummy_generate" href="#" role="button">Generate and Copy</a>
+        <a class="btn btn-lg btn btn-primary mb-3" id="btn_dummy_generate" href="#" role="button">Generate & Copy</a>
         <textarea class="form-control" id="dummy_text" rows="5"></textarea>
       </div>
     </main>
@@ -263,9 +263,9 @@
 
       // Write dummy text
       function writeDummyText(){
-        document.getElementById("dummy_text").innerHTML = "Generating ...";
+        document.getElementById("dummy_text").value = "Generating ...";
         dummyText = createDummyText(letter);
-        document.getElementById("dummy_text").innerHTML = dummyText;
+        document.getElementById("dummy_text").value = dummyText;
         return dummyText;
       }
 
