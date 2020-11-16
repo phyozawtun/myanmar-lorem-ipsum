@@ -5,6 +5,7 @@ Myanmar "Lorem Ipsum" Text Generator
 ## Usages
 ```javascript
   randum_dummy_string = writeDummyText(human_string_in_myanmar_language);
+  console.log(randum_dummy_string); // Out put random string
 ```
 
 # License
