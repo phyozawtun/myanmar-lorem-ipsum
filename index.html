@@ -150,7 +150,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
     <script type="text/javascript">
 
-
       const myConsonant = "\u1000-\u1021"; // "က-အ"
 
       const enChar = "a-zA-Z0-9";
@@ -164,11 +163,30 @@
 
       const aThat = "\u103a";
 
+
+      alert("letter 1");
+
       // Regular expression pattern for Myanmar syllable breaking
       // *** a consonant not after a subscript symbol AND a consonant is not
       // followed by a-That character or a subscript symbol
-      const BREAK_PATTERN = new RegExp("((?<!" + ssSymbol + ")[" + myConsonant + "](?![" + aThat + ssSymbol +
-        "])" + "|[" + enChar + otherChar + "])", "mg");
+      //const BREAK_PATTERN = new RegExp("((?<!" + ssSymbol + ")[" + myConsonant + "](?![" + aThat + ssSymbol + "])" + "|[" + enChar + otherChar + "])", "mg");
+      const BREAK_PATTERN = new RegExp("((?!" + ssSymbol + ")[" + myConsonant + "](?![" + aThat + ssSymbol + "])" + "|[" + enChar + otherChar + "])", "mg");
+
+      /*
+      [a-zA-Z0-9]
+
+      (?<=a)
+      /(?<!Mr)\. *\b\w+\b/gi
+      /((?!Mr).{2}|^.?)\. *\b\w+\b/gi
+
+
+      /^(?!-)[a-zA-Z0-9\-]{1,20}(?<!-)$/
+      /^(?!-)[a-zA-Z0-9\-]{0,19}[a-zA-Z0-9]$/
+      */
+
+      //const BREAK_PATTERN = new RegExp('\(\(?<!' + ssSymbol + '\)\[' + myConsonant + '\]\(?!\[' + aThat + ssSymbol + '\]\)' + '|\[' + enChar + otherChar + '\]\)', 'mg');
+
+      alert("letter 2");
 
       function segment(text) {
         var outArray = text.replace(BREAK_PATTERN, "𝕊$1").split('𝕊')
@@ -251,6 +269,14 @@
         return dummyText;
       }
 
+      // Write dummy text
+      function writeDummyText(letter){
+        document.getElementById("dummy_text").value = "Generating ...";
+        dummyText = createDummyText(letter);
+        document.getElementById("dummy_text").value = dummyText;
+        return dummyText;
+      }
+
       text = document.getElementById("org_text").value;
       text = text.split("။").join("");
       text = text.split("၊").join("");
@@ -258,23 +284,19 @@
       text = text.replace(/\s/g,'');
       console.log(text);
       letter = segment(text);
+      alert_test = segmentWithSeparator(text);
+      alert(alert_test);
+      console.log(letter);
+
       // Mix up and random the string
       var letter  = letter.sort(function() { return 0.5 - Math.random() });
 
-      // Write dummy text
-      function writeDummyText(){
-        document.getElementById("dummy_text").value = "Generating ...";
-        dummyText = createDummyText(letter);
-        document.getElementById("dummy_text").value = dummyText;
-        return dummyText;
-      }
-
       // Run the app
-      writeDummyText();
+      writeDummyText(letter);
 
       // Button
       document.getElementById("btn_dummy_generate").addEventListener("click", function(e){
-        writeDummyText();
+        writeDummyText(letter);
         // Get the text field
         var copyText = document.getElementById("dummy_text");
         // Select the text field
