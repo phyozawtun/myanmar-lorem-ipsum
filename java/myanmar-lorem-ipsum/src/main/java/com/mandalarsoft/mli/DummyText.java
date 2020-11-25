@@ -1,10 +1,9 @@
-package com.mdls.mli;
+package com.mandalarsoft.mli;
 
 /**
  * Myanmar Lorem Ipsum Dummy Text Generator
  * 
  * @author Zayar Shin Thant
- * @see com.mdls.mli.DummyText.class
  * @since 1.0
  * 
  */
@@ -23,7 +22,7 @@ public class DummyText {
     }
 
     public String generate(String rawString, int count){
-        rawString = rawString.replaceAll("[။၊ \s]", "");
+        rawString = rawString.replaceAll("[။၊ \\s]", "");
         rawString = syllableSegmentation.segment(rawString, ",");
         final String[] letter = rawString.split(",");
         return dummyTextEngine.createDummyText(letter, count).toString();

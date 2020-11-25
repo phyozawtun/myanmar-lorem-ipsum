@@ -1,4 +1,4 @@
-package com.mdls.mli;
+package com.mandalarsoft.mli;
 
 import java.io.IOException;
 
@@ -6,7 +6,6 @@ import java.io.IOException;
  * Myanmar Lorem Ipsum Dummy Text Generator
  * 
  * @author Zayar Shin Thant
- * @see com.mdls.mli.DummyTextGenerator.class
  * @since 1.0
  * 
  */
